@@ -24,3 +24,18 @@ function appendTd(tr, value) {
 
   tr.append(newTd);
 }
+
+function appendDeleteBtn(tr){
+  let newTd = document.createElement('td');
+  newTd.innerText = "X";
+
+  newTd.addEventListener("click", function(e){
+    delete allPayments[e.target.parentElement.id];
+    delete allServers[e.target.parentElement.id];
+    updateServerTable();
+    updateSummary();
+    e.target.parentElement.remove();
+  });
+
+  tr.append(newTd);
+}
